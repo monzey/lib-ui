@@ -5,15 +5,21 @@ import styled from 'styled-components'
 
 import FormControl from './index'
 import FormHelperText from './FormHelperText'
+import FormLabel from './FormLabel'
+import FormControlLabel from './FormControlLabel'
 import InputLabel from './InputLabel'
 import Input from '../../Atoms/Input'
 import Select from '../../Atoms/Select'
+import RadioGroup from '../../Atoms/RadioGroup'
+import Radio from '../../Atoms/Radio'
 
 import markdown from './README.md'
 
 export default {
   title: 'Molecules/FormControl',
 }
+
+const options = ['1', '2', '3', '4']
 
 const Container = styled.div`
   display: flex;
@@ -44,22 +50,19 @@ export const formControl = () => {
         {label}
       </InputLabel>
       <Select onChange={action('Select changed')}>
-        <option value="0">
-          Choose an option
-        </option>
-        <option>
-          Option 1
-        </option>
-        <option>
-          Option 2
-        </option>
-        <option>
-          Option 3
-        </option>
+        {options.map(o => <option value={o}>Option {o}</option>)}
       </Select>
       <FormHelperText>
         {helpText}
       </FormHelperText>
+    </FormControl>
+    <FormControl>
+      <FormLabel>
+        {label}
+      </FormLabel>
+      <RadioGroup>
+        {options.map(option => <Radio value={option}>Option {option}</Radio>)}
+      </RadioGroup>
     </FormControl>
   </Container>
 }
